@@ -12,6 +12,7 @@ public class Card {
 	static {
 		faceCardValues.put('T', 10);
 		faceCardValues.put('J', 11);
+		faceCardValues.put('Q', 12);
 		faceCardValues.put('K', 13);
 		faceCardValues.put('A', 14);
 	}

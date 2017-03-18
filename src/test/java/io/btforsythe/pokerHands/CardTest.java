@@ -11,6 +11,7 @@ public class CardTest {
 	private Card eight = new Card("8_");
 	private Card ten = new Card("T_");
 	private Card jack = new Card("J_");
+	private Card queen = new Card("Q_");
 	private Card king = new Card("K_");
 	private Card ace = new Card("A_");
 
@@ -37,5 +38,10 @@ public class CardTest {
 	@Test
 	public void tenShouldNotBeatKing() {
 		assertThat(ten.beats(king ), is(false));
+	}
+	
+	@Test
+	public void queenShouldBeatJack() {
+		assertThat(queen.beats(jack), is(true));
 	}
 }
