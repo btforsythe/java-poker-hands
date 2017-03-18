@@ -61,4 +61,20 @@ public class CardTest {
 			}
 		};
 	}
+	
+	@Test
+	public void shouldBeSameSuit() {
+		Card aceOfX = new Card("AX");
+		Card threeOfX = new Card("3X");
+		
+		assertThat(aceOfX.sharesSuitWith(threeOfX), is(true));
+	}
+	
+	@Test
+	public void shouldNotBeSameSuit() {
+		Card aceOfX = new Card("AX");
+		Card threeOfQ = new Card("3Q");
+		
+		assertThat(aceOfX.sharesSuitWith(threeOfQ), is(false));
+	}
 }

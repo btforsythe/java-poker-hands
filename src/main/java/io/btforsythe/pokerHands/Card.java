@@ -20,12 +20,14 @@ public class Card {
 	private String stringRepresentation;
 
 	private int value;
+	private char suit;
 
 	public Card(String stringRepresentation) {
 		this.stringRepresentation = stringRepresentation;
 		char[] asChars = stringRepresentation.toCharArray();
 		
 		this.value = valueOf(asChars[0]);
+		this.suit = asChars[1];
 	}
 
 	private int valueOf(char valueChar) {
@@ -42,5 +44,9 @@ public class Card {
 	@Override
 	public String toString() {
 		return stringRepresentation;
+	}
+
+	public boolean sharesSuitWith(Card other) {
+		return suit == other.suit;
 	}
 }
