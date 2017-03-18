@@ -1,8 +1,12 @@
 package io.btforsythe.pokerHands;
 
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.assertThat;
 
+import org.hamcrest.Description;
+import org.hamcrest.Matcher;
+import org.hamcrest.TypeSafeMatcher;
 import org.junit.Test;
 
 public class CardTest {
@@ -17,12 +21,12 @@ public class CardTest {
 
 	@Test
 	public void aceShouldBeatFive() {
-		assertThat(ace.beats(five), is(true));
+		assertThat(ace, is(higherThan(five)));
 	}
 	
 	@Test
 	public void eightShouldNotBeatAce() {
-		assertThat(eight.beats(ace), is(false));
+		assertThat(eight, is(not(higherThan(ace))));
 	}
 	
 	@Test
@@ -32,16 +36,29 @@ public class CardTest {
 	
 	@Test
 	public void jackShouldBeatTen() {
-		assertThat(jack.beats(ten), is(true));
+		assertThat(jack, is(higherThan(ten)));
 	}
 	
 	@Test
 	public void tenShouldNotBeatKing() {
-		assertThat(ten.beats(king ), is(false));
+		assertThat(ten, is(not(higherThan(king))));
 	}
 	
 	@Test
 	public void queenShouldBeatJack() {
-		assertThat(queen.beats(jack), is(true));
+		assertThat(queen, is(higherThan(jack)));
+	}
+
+	private Matcher<Card> higherThan(Card other) {
+		return new TypeSafeMatcher<Card>() {
+			@Override
+			public void describeTo(Description description) {
+				description.appendText("is higher than " + other);
+			}
+			@Override
+			protected boolean matchesSafely(Card higherCard) {
+				return higherCard.beats(other) && !other.beats(higherCard);
+			}
+		};
 	}
 }

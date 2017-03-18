@@ -17,10 +17,13 @@ public class Card {
 		faceCardValues.put('A', 14);
 	}
 
+	private String stringRepresentation;
+
 	private int value;
 
-	public Card(String asString) {
-		char[] asChars = asString.toCharArray();
+	public Card(String stringRepresentation) {
+		this.stringRepresentation = stringRepresentation;
+		char[] asChars = stringRepresentation.toCharArray();
 		
 		this.value = valueOf(asChars[0]);
 	}
@@ -37,4 +40,8 @@ public class Card {
 		return value > other.value;
 	}
 
+	@Override
+	public String toString() {
+		return stringRepresentation;
+	}
 }
