@@ -31,9 +31,8 @@ public class Card {
 	private int valueOf(char valueChar) {
 		if (isDigit(valueChar)) {
 			return parseInt("" + valueChar);
-		} else {
-			return faceCardValues.get(valueChar);
 		}
+		return faceCardValues.get(valueChar);
 	}
 	
 	public boolean beats(Card other) {
