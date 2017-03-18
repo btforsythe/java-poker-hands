@@ -10,6 +10,8 @@ public class Card {
 
 	private static Map<Character, Integer> faceCardValues = new HashMap<>();
 	static {
+		faceCardValues.put('T', 10);
+		faceCardValues.put('J', 11);
 		faceCardValues.put('A', 14);
 	}
 
