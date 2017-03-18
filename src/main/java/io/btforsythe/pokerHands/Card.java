@@ -49,4 +49,15 @@ public class Card {
 	public boolean sharesSuitWith(Card other) {
 		return suit == other.suit;
 	}
+
+	@Override
+	public int hashCode() {
+		return stringRepresentation.hashCode();
+	}
+
+	@Override
+	public boolean equals(Object other) {
+		// cheesy kata equals method
+		return stringRepresentation.equals(((Card) other).stringRepresentation);
+	}
 }
